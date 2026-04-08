@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore — isaac-sims.com</title>
+  <meta name="description" content="Explore — thoughts, visions, ideas and concepts by Isaac Sims.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="explore-body page-explore">
+
+  <!-- NAVIGATION -->
+  <nav>
+    <span class="site-name"><a href="index.html">isaac-sims.com</a></span>
+    <div class="nav-links">
+      <a href="store.html">store</a>
+      <a href="about.html">about</a>
+      <a href="explore.html" class="current">explore</a>
+    </div>
+  </nav>
+
+  <!-- CATEGORY TABS -->
+  <div class="explore-tabs">
+    <button class="explore-tab active" data-category="all">All</button>
+    <button class="explore-tab" data-category="thoughts">Thoughts</button>
+    <button class="explore-tab" data-category="visions">Visions</button>
+    <button class="explore-tab" data-category="ideas">Ideas</button>
+    <button class="explore-tab" data-category="concepts">Concepts</button>
+  </div>
+
+  <!-- EXPLORE GRID — populated by main.js from data.js -->
+  <div class="explore-grid" id="explore-grid"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

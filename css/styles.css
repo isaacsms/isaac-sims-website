@@ -1,0 +1,722 @@
+/* ============================================================
+   ISAAC SIMS — Global Styles
+   ============================================================ */
+
+
+/* ============================================================
+   CUSTOM FONTS
+   To activate Monument Grotesk:
+   1. Place your .woff2 files in the /fonts/ folder
+   2. Uncomment the @font-face blocks below
+   3. The site will start using them automatically
+   ============================================================ */
+
+@font-face {
+  font-family: 'MonumentGrotesk';
+  src: url('../fonts/MonumentGrotesk-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+  Only uncomment below if you also have Medium/Light font files:
+
+@font-face {
+  font-family: 'MonumentGrotesk';
+  src: url('../fonts/MonumentGrotesk-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MonumentGrotesk';
+  src: url('../fonts/MonumentGrotesk-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+/* Add any additional custom fonts below the same way */
+
+
+/* ============================================================
+   TYPOGRAPHY VARIABLES — Edit these to adjust all type at once
+   ============================================================ */
+:root {
+  /* --- Font families ---
+     Once you add Monument Grotesk, change --font-sans to:
+     'MonumentGrotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif
+  */
+  --font-sans:  'MonumentGrotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: 'Times New Roman', Times, Georgia, serif;
+
+  /* --- Font sizes --- */
+  --size-nav:        13px;   /* Navigation links */
+  --size-body:       13.5px; /* Body / paragraph text */
+  --size-list:       14px;   /* Project list items */
+  --size-popup-title: 22px;  /* Hover popup title (serif) */
+  --size-popup-desc:  12px;  /* Hover popup description */
+  --size-project-h1: 32px;   /* Project page heading */
+  --size-about-bio:  19px;   /* About page bio text */
+  --size-store-h1:   28px;   /* Store page heading */
+  --size-explore-label: 18px;/* Explore text labels */
+
+  /* --- Line heights --- */
+  --lh-body:   1.6;
+  --lh-loose:  1.85;
+
+  /* --- Letter spacing --- */
+  --ls-nav:    0;
+  --ls-label:  0.02em;
+}
+
+
+/* ============================================================
+   COLOUR VARIABLES
+   ============================================================ */
+:root {
+  --black:       #1a1a1a;
+  --grey:        #999999;
+  --light-grey:  #f0f0ee;
+  --white:       #ffffff;
+  --nav-height:  52px;
+}
+
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--black);
+  background: var(--white);
+  min-height: 100vh;
+}
+
+a   { color: inherit; text-decoration: none; }
+ul  { list-style: none; }
+img { display: block; max-width: 100%; }
+button { font-family: var(--font-sans); cursor: pointer; border: none; background: none; }
+
+
+/* ============================================================
+   PLACEHOLDER IMAGE STYLE
+   Shown wherever an actual image hasn't been uploaded yet
+   ============================================================ */
+.img-placeholder,
+.preview-image-placeholder,
+.project-image-placeholder,
+.store-item-image-placeholder,
+.about-photo-placeholder,
+.explore-item-right .img-placeholder {
+  background: var(--light-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbb;
+  font-size: 11px;
+  font-family: var(--font-sans);
+  letter-spacing: 0.05em;
+}
+
+.preview-image-placeholder  { width: 100%; height: 100%; }
+.project-image-placeholder  { width: 100%; aspect-ratio: 4/3; }
+.store-item-image-placeholder { width: 100%; aspect-ratio: 1; margin-bottom: 20px; }
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 22px;
+  height: var(--nav-height);
+}
+
+.site-name { font-size: var(--size-nav); letter-spacing: var(--ls-nav); }
+.site-name a { color: var(--black); }
+
+.nav-links { display: flex; gap: 36px; align-items: center; }
+
+.nav-links a,
+.nav-links button {
+  font-size: var(--size-nav);
+  color: var(--black);
+  transition: color 0.15s;
+  font-family: var(--font-sans);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-links a:hover,
+.nav-links button:hover { color: var(--grey); }
+
+.nav-links a.current {
+  color: var(--grey);
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   HOME PAGE
+   ============================================================ */
+.home-body {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.home-layout {
+  display: grid;
+  grid-template-columns: 38% 62%;
+  height: 100vh;
+  padding-top: var(--nav-height);
+}
+
+/* --- Left panel --- */
+.home-left {
+  padding: 24px 28px 24px 22px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+}
+
+.sketch-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+  margin-top: 8px;
+}
+
+.sketch-container img,
+.sketch-placeholder {
+  width: 130px;
+}
+
+/* Hover popup — appears in upper-left on project hover */
+.project-hover-popup {
+  position: fixed;
+  top: calc(var(--nav-height) + 28px);
+  left: 22px;
+  width: 290px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 50;
+}
+
+.project-hover-popup.visible {
+  opacity: 1;
+}
+
+.popup-title {
+  font-family: var(--font-serif);
+  font-size: var(--size-popup-title);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.popup-desc {
+  font-family: var(--font-sans);
+  font-size: var(--size-popup-desc);
+  line-height: var(--lh-body);
+  color: var(--grey);
+  max-width: 240px;
+}
+
+/* Project list */
+.project-list {
+  width: 100%;
+  /* Push list down so it doesn't overlap popup area */
+  margin-top: 80px;
+}
+
+.project-list-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0 24px;
+  align-items: baseline;
+  padding: 7px 0;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.project-list-item:hover .proj-title { opacity: 0.45; }
+
+.proj-title    { font-size: var(--size-list); font-weight: 400; transition: opacity 0.15s; }
+.proj-year     { font-size: 13px; white-space: nowrap; }
+.proj-year sup { font-size: 9px; vertical-align: super; }
+.proj-category { font-size: 13px; white-space: nowrap; min-width: 90px; text-align: left; }
+
+/* --- Right panel — full image --- */
+.home-right {
+  position: relative;
+  overflow: hidden;
+  background: var(--light-grey);
+}
+
+.home-preview-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.home-preview-image.visible {
+  opacity: 1;
+}
+
+/* Placeholder shown when no image loaded */
+.home-right-placeholder {
+  position: absolute;
+  inset: 0;
+  background: var(--light-grey);
+}
+
+
+/* ============================================================
+   PROJECT DETAIL PAGE — sticky left, scrolling images
+   ============================================================ */
+.project-body {
+  padding-top: var(--nav-height);
+}
+
+.project-layout {
+  display: grid;
+  grid-template-columns: 38% 62%;
+  align-items: start; /* IMPORTANT: allows sticky to work */
+}
+
+/* Left panel sticks while right panel scrolls */
+.project-left {
+  position: sticky;
+  top: var(--nav-height);
+  height: calc(100vh - var(--nav-height));
+  overflow-y: auto;
+  padding: 36px 28px 36px 22px;
+}
+
+.project-title {
+  font-family: var(--font-serif);
+  font-size: var(--size-project-h1);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.project-short-desc {
+  font-size: var(--size-body);
+  line-height: var(--lh-body);
+  margin-bottom: 36px;
+  max-width: 280px;
+}
+
+.project-meta {
+  font-size: 12.5px;
+  line-height: var(--lh-loose);
+}
+
+.project-meta .meta-number { font-size: 9px; vertical-align: super; margin-right: 3px; }
+.project-meta p            { margin-bottom: 4px; }
+.project-meta .about-text  { margin-top: 14px; line-height: var(--lh-body); max-width: 280px; }
+.project-meta .contribution-text { margin-top: 12px; }
+
+.back-link {
+  display: inline-block;
+  font-size: 12.5px;
+  color: var(--grey);
+  margin-bottom: 28px;
+  transition: color 0.15s;
+}
+.back-link:hover { color: var(--black); }
+
+/* Right panel — stacked scrolling images */
+.project-right {
+  background: var(--light-grey);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.project-right img {
+  width: 100%;
+  display: block;
+}
+
+.project-image-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #bbb;
+}
+
+
+/* ============================================================
+   ABOUT PAGE
+   ============================================================ */
+.about-body  { padding-top: var(--nav-height); }
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.about-left {
+  padding: 80px 48px 60px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-bio { font-size: var(--size-about-bio); line-height: 1.55; max-width: 580px; margin-bottom: 60px; }
+.about-bio p + p { margin-top: 24px; }
+
+.about-contact { font-size: 13px; line-height: var(--lh-loose); }
+.about-contact a:hover { color: var(--grey); }
+
+.about-right { position: relative; }
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - var(--nav-height));
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.about-photo-placeholder {
+  width: 100%;
+  min-height: calc(100vh - var(--nav-height));
+  background: var(--light-grey);
+}
+
+.about-photo-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 12px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.about-photo-caption sup { font-size: 9px; vertical-align: super; }
+
+
+/* ============================================================
+   EXPLORE PAGE — masonry grid with fade-in
+   ============================================================ */
+.explore-body { padding-top: var(--nav-height); }
+
+.explore-tabs {
+  display: flex;
+  gap: 32px;
+  padding: 22px 22px 0;
+}
+
+.explore-tab {
+  font-size: var(--size-nav);
+  color: var(--grey);
+  cursor: pointer;
+  transition: color 0.15s;
+  font-family: var(--font-sans);
+}
+
+.explore-tab.active { color: var(--black); }
+.explore-tab:hover  { color: var(--black); }
+
+/* Grid — CSS columns for masonry effect */
+.explore-grid {
+  padding: 28px 10px 80px;
+  columns: 4;
+  column-gap: 0;
+}
+
+/* Each item fades in on load */
+.explore-item {
+  break-inside: avoid;
+  cursor: pointer;
+  display: block;
+  padding: 10px;
+  opacity: 0; /* starts invisible — JS sets animation */
+  transition: opacity 0.15s;
+  color: inherit;
+  text-decoration: none;
+}
+
+.explore-item:hover { opacity: 0.5 !important; }
+
+.explore-item.hidden { display: none !important; }
+
+/* Fade-in animation */
+@keyframes fadeInItem {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.explore-item.faded-in {
+  animation: fadeInItem 0.5s ease forwards;
+}
+
+/* Image thumbnails */
+.explore-item-image img {
+  width: 100%;
+  display: block;
+}
+
+.explore-item-image .img-placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--light-grey);
+}
+
+/* Text code labels */
+.explore-item-text {
+  padding: 16px 2px;
+  font-size: var(--size-explore-label);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: var(--ls-label);
+}
+
+/* Empty spacer items — give abstract spacing to the grid */
+.explore-spacer {
+  break-inside: avoid;
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   EXPLORE ITEM DETAIL PAGE
+   ============================================================ */
+.explore-item-body { padding-top: var(--nav-height); }
+
+.explore-item-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 22px;
+}
+
+.explore-nav-btn {
+  font-size: var(--size-nav);
+  color: var(--black);
+  cursor: pointer;
+  transition: color 0.15s;
+  font-family: var(--font-sans);
+}
+.explore-nav-btn:hover { color: var(--grey); }
+
+.explore-item-layout {
+  display: grid;
+  grid-template-columns: 26% 74%;
+  min-height: calc(100vh - var(--nav-height) - 55px);
+}
+
+.explore-item-left {
+  padding: 16px 22px 40px 22px;
+}
+
+.explore-item-caption { font-size: 13px; line-height: 1.6; }
+.explore-item-date    { font-size: 12px; color: var(--grey); margin-top: 6px; }
+
+.explore-item-right { padding: 0 22px 40px 0; }
+
+.explore-item-right img {
+  width: 100%;
+  height: calc(100vh - var(--nav-height) - 95px);
+  object-fit: cover;
+  display: block;
+}
+
+.explore-item-right .img-placeholder {
+  width: 100%;
+  height: calc(100vh - var(--nav-height) - 95px);
+  background: var(--light-grey);
+}
+
+
+/* ============================================================
+   STORE PAGE
+   ============================================================ */
+.store-body   { padding-top: var(--nav-height); }
+.store-layout { padding: 40px 22px 80px; }
+
+.store-header          { margin-bottom: 40px; }
+.store-header h1       { font-family: var(--font-serif); font-size: var(--size-store-h1); font-weight: 400; margin-bottom: 8px; }
+.store-header p        { font-size: 13px; color: var(--grey); }
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+}
+
+.store-item { background: var(--white); padding: 24px; }
+
+.store-item-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.store-item-image-placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--light-grey);
+  margin-bottom: 20px;
+}
+
+.store-item-name        { font-size: 14px; margin-bottom: 6px; }
+.store-item-description { font-size: 12px; color: var(--grey); line-height: 1.55; margin-bottom: 16px; }
+.store-item-price       { font-size: 13px; margin-bottom: 14px; }
+
+.snipcart-add-item,
+.buy-btn {
+  font-size: 12px;
+  font-family: var(--font-sans);
+  color: var(--black);
+  border: 1px solid var(--black);
+  padding: 8px 18px;
+  cursor: pointer;
+  background: none;
+  transition: background 0.15s, color 0.15s;
+  letter-spacing: 0.02em;
+}
+
+.snipcart-add-item:hover,
+.buy-btn:hover { background: var(--black); color: var(--white); }
+
+.sold-out { font-size: 12px; color: var(--grey); font-style: italic; }
+
+.cart-btn { font-size: var(--size-nav); }
+
+
+/* ============================================================
+   RESPONSIVE — Mobile & Tablet
+   ============================================================ */
+
+/* --- Tablet (≤ 900px) --- */
+@media (max-width: 900px) {
+  .project-layout,
+  .about-layout,
+  .explore-item-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .project-left {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+
+  .project-right {
+    min-height: 60vw;
+    padding: 24px;
+  }
+
+  .about-right { order: -1; }
+  .about-photo, .about-photo-placeholder { min-height: 70vw; }
+  .about-left  { padding: 40px 22px; }
+  .about-bio   { font-size: 16px; }
+
+  .explore-grid { columns: 2; }
+  .store-grid   { grid-template-columns: 1fr 1fr; }
+}
+
+
+/* --- Mobile (≤ 600px) --- */
+@media (max-width: 600px) {
+
+  /* Home: single column, full width list only */
+  .home-body { overflow: auto; height: auto; }
+
+  .home-layout {
+    display: block; /* stack vertically */
+    padding-top: var(--nav-height);
+    height: auto;
+  }
+
+  /* Hide the right image panel entirely on mobile */
+  .home-right { display: none; }
+
+  /* Hide the sketch on mobile for cleaner look */
+  .sketch-container { display: none; }
+
+  /* Project list takes full width */
+  .home-left {
+    padding: 24px 16px 60px;
+  }
+
+  .project-list { margin-top: 32px; }
+
+  /* Mobile list: title only — year and type are hidden */
+  .proj-year,
+  .proj-category { display: none; }
+
+  .project-list-item {
+    display: block; /* single column */
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .proj-title { font-size: 16px; }
+
+  /* Popup not needed on mobile */
+  .project-hover-popup { display: none; }
+
+  /* Nav links tighter on mobile */
+  .nav-links { gap: 16px; }
+
+  /* Explore single column */
+  .explore-grid { columns: 1; padding: 20px 12px 60px; }
+
+  /* Store single column */
+  .store-grid { grid-template-columns: 1fr; }
+
+  /* Project page */
+  .project-left { padding: 28px 16px; }
+  .project-title { font-size: 24px; }
+
+  /* About */
+  .about-bio { font-size: 15px; }
+}

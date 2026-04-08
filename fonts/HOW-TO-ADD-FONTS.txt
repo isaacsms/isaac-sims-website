@@ -1,0 +1,34 @@
+HOW TO ADD YOUR OWN FONTS
+==========================
+
+1. MONUMENT GROTESK (recommended body font)
+   - Purchase from: https://dinamo.xyz/typefaces/monument-grotesk
+   - Download the font files — you want the WOFF2 versions (smallest/fastest)
+   - Place the files in this folder like this:
+
+     fonts/
+       MonumentGrotesk-Regular.woff2
+       MonumentGrotesk-Medium.woff2   (optional, for slightly heavier text)
+       MonumentGrotesk-Light.woff2    (optional, for lighter text)
+
+   - Then open css/styles.css and follow the instructions in the
+     "CUSTOM FONTS" section at the top of that file.
+     Uncomment the @font-face blocks and they'll start working immediately.
+
+
+2. ANY OTHER FONT
+   - Place the .woff2 file in this folder
+   - In css/styles.css, copy one of the @font-face blocks and update:
+       font-family: 'YourFontName'     ← give it a name
+       src: url('../fonts/YourFont.woff2')   ← match your filename
+   - Then update the --font-sans or --font-serif variable to use 'YourFontName'
+
+
+3. ADJUSTING TYPE SIZES & WEIGHTS
+   - All typography settings live at the top of css/styles.css
+   - Look for the section marked "TYPOGRAPHY VARIABLES"
+   - Change the sizes, weights and line-heights there
+
+
+NOTE: WOFF2 is the modern web font format — use it if available.
+If you only have OTF/TTF files, those work too but are slightly larger.

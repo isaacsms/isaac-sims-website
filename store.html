@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store — isaac-sims.com</title>
+  <meta name="description" content="Store — objects and printed matter by Isaac Sims.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- SNIPCART STYLES -->
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.3/default/snipcart.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="store-body page-store">
+
+  <!-- NAVIGATION -->
+  <nav>
+    <span class="site-name"><a href="index.html">isaac-sims.com</a></span>
+    <div class="nav-links">
+      <a href="store.html" class="current">store</a>
+      <a href="about.html">about</a>
+      <a href="explore.html">explore</a>
+      <!-- Cart icon — Snipcart handles this -->
+      <button class="snipcart-checkout cart-btn">cart (<span class="snipcart-items-count">0</span>)</button>
+    </div>
+  </nav>
+
+  <!-- STORE LAYOUT -->
+  <main class="store-layout">
+
+    <div class="store-header">
+      <h1>Store</h1>
+      <p>Objects and printed matter. Shipped from Auckland, New Zealand.</p>
+    </div>
+
+    <!-- PRODUCT GRID — populated by main.js from data.js -->
+    <div class="store-grid" id="store-grid"></div>
+
+  </main>
+
+  <!--
+    ================================================================
+    SNIPCART SETUP
+    ================================================================
+    To activate the store:
+
+    1. Go to https://snipcart.com and create a free account
+    2. In your Snipcart dashboard, go to Account > API Keys
+    3. Copy your PUBLIC API KEY
+    4. Replace YOUR_PUBLIC_API_KEY below with your actual key
+    5. Connect Stripe in your Snipcart dashboard (Account > Payment)
+    6. That's it — Snipcart handles cart, checkout, and payments
+
+    Transaction fee: 2% per sale (+ Stripe's ~1.5% + 25c NZD)
+    No monthly fee on the free plan.
+    ================================================================
+  -->
+  <div hidden id="snipcart" data-api-key="YOUR_PUBLIC_API_KEY" data-currency="nzd"></div>
+  <script async src="https://cdn.snipcart.com/themes/v3.7.3/default/snipcart.js"></script>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
