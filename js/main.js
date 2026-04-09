@@ -92,7 +92,7 @@ function showHomePreview(project) {
 }
 
 function showPopup(popup, project) {
-  popup.querySelector('.popup-title').textContent = `${project.title} (${project.number})`;
+  popup.querySelector('.popup-title').textContent = project.title;
   popup.querySelector('.popup-desc').textContent  = project.description;
   popup.classList.add('visible');
 }
