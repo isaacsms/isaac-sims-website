@@ -19,16 +19,6 @@
     </div>
   </nav>
 
-  <!--
-    HOVER POPUP — appears top-left when a project is hovered.
-    Title uses the serif font; description uses the body font.
-    Hidden by default, shown by JS.
-  -->
-  <div class="project-hover-popup" id="project-popup">
-    <div class="popup-title"></div>
-    <div class="popup-desc"></div>
-  </div>
-
   <!-- HOME LAYOUT: Left = project list, Right = preview image -->
   <main class="home-layout">
 
@@ -36,31 +26,30 @@
     <div class="home-left">
 
       <!--
-        SKETCH ILLUSTRATION
-        To use your own sketch: save it as images/sketch.png
-        then replace the <svg> below with:
-        <img src="images/sketch.png" alt="Studio sketch">
+        HOME ICON — floats over the top of the project list.
+        File: images/home-icon.png (transparent background PNG)
+        Replace the src below if you rename or move the file.
       -->
-      <div class="sketch-container">
-        <svg class="sketch-placeholder" viewBox="0 0 140 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 80 L20 50 L70 20 L120 50 L120 80" stroke="#1a1a1a" stroke-width="0.8" fill="none"/>
-          <path d="M20 80 L120 80" stroke="#1a1a1a" stroke-width="0.8"/>
-          <rect x="45" y="55" width="25" height="25" stroke="#1a1a1a" stroke-width="0.6" fill="none"/>
-          <rect x="80" y="58" width="16" height="14" stroke="#1a1a1a" stroke-width="0.6" fill="none"/>
-          <line x1="47" y1="57" x2="55" y2="65" stroke="#1a1a1a" stroke-width="0.4"/>
-          <line x1="51" y1="57" x2="60" y2="66" stroke="#1a1a1a" stroke-width="0.4"/>
-          <line x1="55" y1="57" x2="64" y2="66" stroke="#1a1a1a" stroke-width="0.4"/>
-        </svg>
-      </div>
+      <img class="home-icon-img" src="images/home-icon.png" alt="">
 
       <!-- Project list — populated from data.js by main.js -->
       <ul class="project-list" id="project-list"></ul>
 
     </div>
 
-    <!-- RIGHT PANEL — full-bleed preview image, swapped on hover by JS -->
+    <!-- RIGHT PANEL — full-bleed preview image + hover popup overlay -->
     <div class="home-right" id="home-right">
-      <!-- Images injected here by main.js -->
+
+      <!--
+        HOVER POPUP — overlays the top-left of the image on project hover.
+        Title: Times (serif). Description: Monument Grotesk (sans-serif).
+      -->
+      <div class="project-hover-popup" id="project-popup">
+        <div class="popup-title"></div>
+        <div class="popup-desc"></div>
+      </div>
+
+      <!-- Preview images injected here by main.js -->
     </div>
 
   </main>

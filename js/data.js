@@ -247,7 +247,7 @@ const exploreItems = [
   {
     id: "644ZX",
     type: "text",
-    category: "ideas",
+    category: "concepts",
     label: "644ZX",
     caption: null,
     location: null,
@@ -307,7 +307,7 @@ const exploreItems = [
   {
     id: "explore-5",
     type: "image",
-    category: "ideas",
+    category: "concepts",
     label: null,
     caption: "Abstract light study.",
     location: "Studio.",
@@ -317,7 +317,7 @@ const exploreItems = [
   {
     id: "explore-6",
     type: "image",
-    category: "ideas",
+    category: "concepts",
     label: null,
     caption: "Blue tonal study.",
     location: "Studio.",
