@@ -20,9 +20,10 @@ function getExploreItem(id) { return exploreItems.find(e => e.id === id); }
 // ============================================================
 
 function initHomePage() {
-  const list    = document.getElementById('project-list');
-  const right   = document.getElementById('home-right');
-  const popup   = document.getElementById('project-popup');
+  const list      = document.getElementById('project-list');
+  const right     = document.getElementById('home-right');
+  const imageArea = document.getElementById('home-image-area');
+  const popup     = document.getElementById('project-popup');
   if (!list || !right) return;
 
   // --- Build list items ---
@@ -61,7 +62,7 @@ function initHomePage() {
     });
   }
 
-  // --- Build one <img> per project in the right panel ---
+  // --- Build one <img> per project in the image area (below the text) ---
   // All are stacked absolutely; only the active one is visible.
   projects.forEach(project => {
     const img = document.createElement('img');
@@ -72,16 +73,15 @@ function initHomePage() {
     if (project.previewImage) {
       img.src = project.previewImage;
       img.onerror = () => {
-        // If the image file doesn't exist, replace with placeholder
         img.style.display = 'none';
         const ph = document.createElement('div');
         ph.className = 'home-right-placeholder';
         ph.dataset.id = project.id;
-        right.appendChild(ph);
+        imageArea.appendChild(ph);
       };
     }
 
-    right.appendChild(img);
+    imageArea.appendChild(img);
   });
 
   // Default: show most recent project (first in array)

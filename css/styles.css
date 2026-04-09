@@ -54,10 +54,10 @@
   --font-serif: 'Times New Roman', Times, Georgia, serif;
 
   /* --- Font sizes --- */
-  --size-nav:        13px;   /* Navigation links */
-  --size-body:       13.5px; /* Body / paragraph text */
-  --size-list:       14px;   /* Project list items */
-  --size-popup-title: 22px;  /* Hover popup title (serif) */
+  --size-nav:        20px;   /* Navigation links */
+  --size-body:       20px; /* Body / paragraph text */
+  --size-list:       20px;   /* Project list items */
+  --size-popup-title: 34px;  /* Hover popup title (serif) */
   --size-popup-desc:  12px;  /* Hover popup description */
   --size-project-h1: 32px;   /* Project page heading */
   --size-about-bio:  19px;   /* About page bio text */
@@ -190,9 +190,9 @@ nav {
 
 .home-layout {
   display: grid;
-  grid-template-columns: 38% 62%;
+  grid-template-columns: 50% 50%; /* left % = where image left edge sits */
   height: 100vh;
-  padding-top: var(--nav-height);
+  padding-top: calc(var(--nav-height) + 100px); /* increase 50px to push content down further */
 }
 
 /* --- Left panel --- */
@@ -203,13 +203,16 @@ nav {
   flex-direction: column;
   position: relative;
   z-index: 10;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+.home-left::-webkit-scrollbar { display: none; }
 
-/* Home icon — floats over the top of the list, transparent PNG */
+/* Home icon — fixed so it stays pinned while the list scrolls */
 .home-icon-img {
-  position: absolute;
-  top: 12px;
-  left: 50%;
+  position: fixed;
+  top: calc(var(--nav-height) + 12px);
+  left: 19%; /* centre of the 38% left panel */
   transform: translateX(-50%);
   width: 115px;
   pointer-events: none; /* so it doesn't block hover on list items */
@@ -224,31 +227,35 @@ nav {
 
 .project-list-item {
   display: grid;
-  grid-template-columns: 1fr 90px 130px;
+  grid-template-columns: 1fr 1fr 1fr; /* equal thirds — adjust middle value to shift year */
   gap: 0;
   align-items: baseline;
-  padding: 5px 0;
+  padding: 0px 0;
   cursor: pointer;
   transition: opacity 0.15s;
 }
 
 .project-list-item:hover .proj-title { opacity: 0.45; }
 
-.proj-title    { font-size: 15px; font-weight: 400; transition: opacity 0.15s; }
-.proj-year     { font-size: 13px; white-space: nowrap; text-align: center; }
-.proj-year sup { font-size: 9px; vertical-align: super; }
-.proj-category { font-size: 13px; white-space: nowrap; text-align: left; padding-left: 8px; }
+.proj-title    { font-size: 20px; font-weight: 400; transition: opacity 0.15s; }
+.proj-year     { font-size: 20px; white-space: nowrap; text-align: center; }
+.proj-year sup { font-size: 14px; vertical-align: super; }
+.proj-category { font-size: 20px; white-space: nowrap; text-align: left; padding-left: 8px; }
 
-/* Hover popup — overlays top-left corner of the image panel */
+/* --- Right panel — text above, image below --- */
+.home-right {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Text area — sits above the image, fades in on hover */
 .project-hover-popup {
-  position: absolute;
-  top: 28px;
-  left: 28px;
-  width: 300px;
+  flex-shrink: 0;
+  padding: 24px 28px 16px 28px;
+  min-height: 110px; /* reserves space so image doesn't jump — adjust to taste */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
-  z-index: 50;
 }
 
 .project-hover-popup.visible {
@@ -270,12 +277,13 @@ nav {
   font-size: var(--size-popup-desc);
   line-height: var(--lh-body);
   color: var(--black);
-  max-width: 240px;
+  max-width: 340px;
   opacity: 0.7;
 }
 
-/* --- Right panel — full image --- */
-.home-right {
+/* Image area — fills remaining space below the text */
+.home-image-area {
+  flex: 1;
   position: relative;
   overflow: hidden;
   background: var(--light-grey);
@@ -295,7 +303,6 @@ nav {
   opacity: 1;
 }
 
-/* Placeholder shown when no image loaded */
 .home-right-placeholder {
   position: absolute;
   inset: 0;
