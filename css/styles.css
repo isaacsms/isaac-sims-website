@@ -57,8 +57,8 @@
   --size-nav:        20px;   /* Navigation links */
   --size-body:       20px; /* Body / paragraph text */
   --size-list:       20px;   /* Project list items */
-  --size-popup-title: 34px;  /* Hover popup title (serif) */
-  --size-popup-desc:  12px;  /* Hover popup description */
+  --size-popup-title: 48px;  /* Hover popup title (serif) */
+  --size-popup-desc:  14px;  /* Hover popup description */
   --size-project-h1: 32px;   /* Project page heading */
   --size-about-bio:  19px;   /* About page bio text */
   --size-store-h1:   28px;   /* Store page heading */
@@ -192,7 +192,7 @@ nav {
   display: grid;
   grid-template-columns: 50% 50%; /* left % = where image left edge sits */
   height: 100vh;
-  padding-top: calc(var(--nav-height) + 100px); /* increase 50px to push content down further */
+  padding-top: calc(var(--nav-height) + 150px); /* increase 50px to push content down further */
 }
 
 /* --- Left panel --- */
@@ -214,7 +214,7 @@ nav {
   top: calc(var(--nav-height) + 12px);
   left: 19%; /* centre of the 38% left panel */
   transform: translateX(-50%);
-  width: 115px;
+  width: 200px;
   pointer-events: none; /* so it doesn't block hover on list items */
   z-index: 5;
 }
@@ -222,7 +222,8 @@ nav {
 /* Project list — starts flush with top, icon floats over it */
 .project-list {
   width: 100%;
-  margin-top: 0;
+  margin: 0px;
+  padding: 0;
 }
 
 .project-list-item {
@@ -235,12 +236,14 @@ nav {
   transition: opacity 0.15s;
 }
 
-.project-list-item:hover .proj-title { opacity: 0.45; }
+.project-list-item:hover .proj-title,
+.project-list-item:hover .proj-year,
+.project-list-item:hover .proj-category { opacity: 0.45; }
 
 .proj-title    { font-size: 20px; font-weight: 400; transition: opacity 0.15s; }
-.proj-year     { font-size: 20px; white-space: nowrap; text-align: center; }
+.proj-year     { font-size: 20px; white-space: nowrap; text-align: center; transition: opacity 0.15s; }
 .proj-year sup { font-size: 14px; vertical-align: super; }
-.proj-category { font-size: 20px; white-space: nowrap; text-align: left; padding-left: 8px; }
+.proj-category { font-size: 20px; white-space: nowrap; text-align: left; padding-left: 8px; transition: opacity 0.15s; }
 
 /* --- Right panel — image fills full panel --- */
 .home-right {
@@ -252,7 +255,7 @@ nav {
    left: 50vw matches the 50/50 grid split — adjust if you change the split */
 .project-hover-popup {
   position: fixed;
-  top: calc(var(--nav-height) + 12px); /* sits in the gap above content */
+  top: calc(var(--nav-height) + 40px); /* sits in the gap above content */
   left: 50vw;                           /* left edge of the right/image panel */
   width: 420px;
   opacity: 0;
@@ -270,8 +273,8 @@ nav {
   font-family: var(--font-serif);
   font-size: var(--size-popup-title);
   font-weight: 400;
-  line-height: 1.2;
-  margin-bottom: 8px;
+  line-height: 1.6;
+  margin-bottom: -10px;
   letter-spacing: -0.01em;
   color: var(--black);
 }
@@ -279,7 +282,7 @@ nav {
 .popup-desc {
   font-family: var(--font-serif);
   font-size: var(--size-popup-desc);
-  line-height: var(--lh-body);
+  line-height: 1.2(--lh-body);
   color: var(--black);
   max-width: 340px;
   opacity: 0.7;
