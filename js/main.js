@@ -52,15 +52,7 @@ function initHomePage() {
     list.appendChild(li);
   });
 
-  // Hide popup when mouse leaves the left panel
-  const leftPanel = document.querySelector('.home-left');
-  if (leftPanel && popup) {
-    leftPanel.addEventListener('mouseleave', () => {
-      popup.classList.remove('visible');
-      // Return to default (first/most recent project)
-      if (projects.length > 0) showHomePreview(projects[0]);
-    });
-  }
+  // Popup stays visible after first hover — no mouseleave hide
 
   // --- Build one <img> per project in the image area (below the text) ---
   // All are stacked absolutely; only the active one is visible.

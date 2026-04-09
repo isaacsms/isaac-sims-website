@@ -197,7 +197,7 @@ nav {
 
 /* --- Left panel --- */
 .home-left {
-  padding: 20px 28px 24px 22px;
+  padding: 0px 28px 24px 22px; /* top 0 = list aligns with image top */
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -285,10 +285,11 @@ nav {
   opacity: 0.7;
 }
 
-/* Image area — fills the full right panel flush with the list top */
+/* Image area — top value pushes it down to align with title list */
 .home-image-area {
   position: absolute;
   inset: 0;
+  top: 0px; /* increase this to push image down — match to your list top padding */
   overflow: hidden;
   background: var(--light-grey);
 }
